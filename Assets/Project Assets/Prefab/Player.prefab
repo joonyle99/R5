@@ -26,8 +26,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5374771925544610890}
   m_Father: {fileID: 2904174828876599720}
@@ -233,7 +233,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2904174828876599720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -309,8 +309,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6849301841497063096}
   - {fileID: 1491029763487964480}
@@ -358,7 +358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2904174828876599720}
   - component: {fileID: 2617285100247542941}
-  - component: {fileID: 4080220503681047119}
   - component: {fileID: 6926726595139234878}
   - component: {fileID: 1848701631826351291}
   m_Layer: 7
@@ -378,7 +377,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2705584422414057124}
@@ -414,21 +413,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4080220503681047119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477664361324071851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa426354727ffe44b11691ebb17774d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoundaryHitDetector
-  _boundaryLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &6926726595139234878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +432,7 @@ MonoBehaviour:
   _fallingJoystickRange: 150
   _pendulumLength: 0.03
   _pendulumDamping: 2
-  _stretchAmount: 1.4
+  _stretchAmount: 1.25
   _visual: {fileID: 925671523735830897}
   _centerPoint: {fileID: 6849301841497063096}
   _handPoint: {fileID: 1491029763487964480}
