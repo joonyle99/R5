@@ -24,7 +24,16 @@ public sealed class PlayerAttachedState : StateBase<PlayerBehaviour>
         var angularAccel = -(gravity / owner.PendulumLength) * Mathf.Sin(displacementRad) * Mathf.Rad2Deg;
         owner.PendulumAngularVelocity += angularAccel * Time.deltaTime;
         owner.PendulumAngularVelocity *= 1f - owner.PendulumDamping * Time.deltaTime;
-        owner.Rigid.MoveRotation(owner.Rigid.rotation + owner.PendulumAngularVelocity * Time.deltaTime);
+
+        if (Mathf.Abs(owner.PendulumAngularVelocity) < 0.5f && Mathf.Abs(owner.Rigid.rotation) < 1f)
+        {
+            owner.PendulumAngularVelocity = 0f;
+            owner.Rigid.MoveRotation(0f);
+        }
+        else
+        {
+            owner.Rigid.MoveRotation(owner.Rigid.rotation + owner.PendulumAngularVelocity * Time.deltaTime);
+        }
 
         var pointerInput = owner.PointerInput;
         var pointerWorldPos = pointerInput.GetWorldPos;

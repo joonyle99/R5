@@ -16,8 +16,8 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
     public float FallingJoystickRange => _fallingJoystickRange;
 
     [Space]
-    [SerializeField] private float _pendulumLength = 1.5f;
-    [SerializeField] private float _pendulumDamping = 3f;
+    [SerializeField] private float _pendulumLength = 1.5f;  // 시계추 길이 — 짧을수록 진동 빠름
+    [SerializeField] private float _pendulumDamping = 3f;   // 감쇠 계수 — 클수록 빨리 멈춤
     public float PendulumLength => _pendulumLength;
     public float PendulumDamping => _pendulumDamping;
     public float PendulumAngularVelocity { get; set; }
@@ -65,6 +65,13 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
 
     // ============ ... ============
 
+    protected override void OnDead()
+    {
+        base.OnDead();
+
+        ResetVisual();
+    }
+
     protected override void OnOccupy(Peg peg)
     {
         base.OnOccupy(peg);
@@ -93,6 +100,17 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
 
     // ========= ... =========
 
+    public void ResetVisual()
+    {
+        _isFacingRight = true;
+        ResetVisualScale();
+        ResetAlignment();
+    }
+
+    // ========= ... =========
+
+    public void ResetVisualScale() => SetVisualScale(_defaultVisualScale.x, _defaultVisualScale.y);
+
     public void SetVisualScale(float xAbs, float y)
     {
         var scale = _visual.localScale;
@@ -100,8 +118,6 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
         scale.y = y;
         _visual.localScale = scale;
     }
-
-    public void ResetVisualScale() => SetVisualScale(_defaultVisualScale.x, _defaultVisualScale.y);
 
     // ========= ... =========
 
@@ -121,6 +137,11 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
 
     // ========= ... =========
 
+    public void ResetAlignment()
+    {
+        _alignTarget = _handPoint;
+        ApplyAlignment();
+    }
     private Vector3 AlignedPos(Transform point)
     {
         var pos = point.localPosition;
@@ -158,6 +179,7 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
 
         OccupyingPeg.TryOccupy(this);
 
+        ResetVisual();
         _fsm.ChangeState<PlayerAttachedState>();
 
         // _onOccupy?.Invoke(OccupyingPeg);
