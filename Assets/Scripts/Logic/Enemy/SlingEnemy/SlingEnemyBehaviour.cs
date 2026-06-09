@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class SlingEnemyBehaviour : EnemyBehaviour, IPegOccupant
 {
     public Rigidbody2D Rigid { get; private set; }
-    public Animator Animator { get; private set; }
     public SlingBehaviour SlingBehaviour { get; private set; }
 
     public Peg OccupyingPeg { get; private set; }
@@ -21,7 +20,6 @@ public abstract class SlingEnemyBehaviour : EnemyBehaviour, IPegOccupant
         _onOccupy = onOccupy;
 
         Rigid = GetComponentInChildren<Rigidbody2D>();
-        Animator = GetComponentInChildren<Animator>();
         SlingBehaviour = GetComponentInChildren<SlingBehaviour>();
         SlingBehaviour.Initialize(Rigid);
         SlingBehaviour.SetActiveSling(true);
