@@ -6826,6 +6826,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6926726595139234878, guid: b1628fba081b74d4d94aae03bc1921de, type: 3}
+      propertyPath: _pendulumLength
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926726595139234878, guid: b1628fba081b74d4d94aae03bc1921de, type: 3}
+      propertyPath: _pendulumDamping
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
