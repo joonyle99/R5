@@ -4,7 +4,7 @@ using JoonyleGameDevKit;
 using System.Collections;
 using System.Collections.Generic;
 
-public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>, ITargetHitHandler
+public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>
 {
     public CameraController CameraController { get; private set; }
     public IPointerInput PointerInput { get; private set; }
@@ -149,7 +149,7 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>, ITargetHitHan
 
     // ========= ... =========
 
-    public void OnTargetCollisionHit()
+    public void SnapToPeg()
     {
         if (OccupyingPeg == null) return;
 
@@ -163,8 +163,8 @@ public sealed class PlayerBehaviour : SlingEntity<EnemyBehaviour>, ITargetHitHan
         // _onOccupy?.Invoke(OccupyingPeg);
     }
 
-    public void OnTargetTriggerHit()
+    protected override void HandleTargetTriggerEnter(Collider2D collider)
     {
-        throw new NotImplementedException();
+        
     }
 }

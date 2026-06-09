@@ -80,6 +80,7 @@ public abstract class SlingEntity : CombatEntity, IPegOccupant
         base.OnDead();
 
         OccupyingPeg?.TryVacate(this);
+        OccupyingPeg = null;
     }
 
     // ============ ... ============
@@ -112,7 +113,22 @@ public abstract class SlingEntity : CombatEntity, IPegOccupant
         }
     }
 
-    protected virtual void HandleTargetTriggerEnter(Collider2D collider) { }
+    // ========= ... =========
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleCollisionEnter();
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        HandleCollisionStay();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        HandleCollisionExit();
+    }
 
     // ========= ... =========
 
@@ -124,7 +140,10 @@ public abstract class SlingEntity : CombatEntity, IPegOccupant
         }
     }
 
-    // ========= ... =========
+    protected virtual void HandleTargetTriggerEnter(Collider2D collider)
+    {
+        
+    }
 
     private void HandlePegTriggerStay(Peg peg)
     {
@@ -142,13 +161,28 @@ public abstract class SlingEntity : CombatEntity, IPegOccupant
         }
     }
 
-    // ========= ... =========
-
     private void HandlePegTriggerExit(Peg peg)
     {
-        if (peg.TryVacate(this) && peg == OccupyingPeg)
-        {
-            OccupyingPeg = null;
-        }
+        // if (peg.TryVacate(this) && peg == OccupyingPeg)
+        // {
+        //     OccupyingPeg = null;
+        // }
+    }
+
+    // ========= ... =========
+
+    protected virtual void HandleCollisionEnter()
+    {
+
+    }
+
+    private void HandleCollisionStay()
+    {
+
+    }
+
+    private void HandleCollisionExit()
+    {
+
     }
 }
